@@ -1,1 +1,7 @@
 <p>Hello</p>
+
+<ul>
+  <%@reviews.each do |review|%>
+    <li><%=link_to review.title, review_path(review)%></li>
+  <%end%>
+</ul>
