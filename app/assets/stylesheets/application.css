@@ -13,3 +13,8 @@
  *= require_tree .
  *= require_self
  */
+
+.reviewtext{
+   word-wrap: break-word;
+   white-space: pre-wrap;
+ }

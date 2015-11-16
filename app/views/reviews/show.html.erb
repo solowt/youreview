@@ -1,3 +1,11 @@
 <h1><%=@review.title%></h1>
-<p class="reviewtext"><%=@review.text%>
-<p><%=@movie_info["Runtime"]%></p>
+<h2><%=@movie_info["Title"]%></h2>
+<ul>
+  <li>Director: <%=@movie_info["Director"]%></li>
+  <li>Year: <%=@movie_info["Year"]%></li>
+  <li>Country: <%=@movie_info["Country"]%></li>
+</ul>
+<div>
+  <img src="<%=@movie_info['Poster']%>" style='float: left;'>
+  <p class="reviewtext"><%=@review.text%>
+</div>
