@@ -1,4 +1,4 @@
-<h1><%=@review.title%></h1>
+<h1><%=@review.title%> [<%=@review.score%>/10]</h1>
 <h2><%=@movie_info["Title"]%></h2>
 <ul>
   <li>Director: <%=@movie_info["Director"]%></li>
@@ -9,3 +9,7 @@
   <img src="<%=@movie_info['Poster']%>" style='float: left;'>
   <p class="reviewtext"><%=@review.text%>
 </div>
+<%if current_user == @review.user%>
+ <%=link_to "(Edit)", edit_review_path(@review)%>
+ <%= link_to '(Delete)', review_path(@review), :method => :delete %>
+ <%end%>
