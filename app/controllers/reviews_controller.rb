@@ -10,11 +10,6 @@ class ReviewsController < ApplicationController
     @reviews = Review.where(category: "Album")
   end
   def show
-
-
-    # all this will be in the create method.  the
-    # show method will access the review and its associated
-    # subject
     @review = Review.find(params[:id])
     @info = Work.find(@review.work_id).apidata
   end
@@ -25,10 +20,16 @@ class ReviewsController < ApplicationController
 
     @review = current_user.reviews.new(review_params)
 
-
     if @review.category == "Movie"
       movie_info = HTTParty.get("http://www.omdbapi.com/?t=#{@review.name}&plot=short&r=json")
-      @new_work = Work.create(title: @review.name, medium: "Movie", apidata: movie_info)
+      Work.all.each do |work|
+        if work.apidata["imdbID"] == movie_info["imdbID"]
+          @new_work = work
+        end
+      end
+      if !@new_work
+        @new_work = Work.create(title: @review.name, medium: "Movie", apidata: movie_info)
+      end
       @review.update(work_id: @new_work.id)
     # books and albums here
     # elsif @review.category.downcase == "album"
