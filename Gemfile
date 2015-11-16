@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'openlibrary'
 gem 'rspotify'
 gem 'httparty'
 gem 'devise'
