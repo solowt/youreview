@@ -12,8 +12,8 @@ class WorksController < ApplicationController
     work_array =  RSpotify::Artist.search(params[:work][:title])
     artist = work_array.first
     albums = artist.albums
-    @album_array = Work.create(title: params[:work][:title], medium: "albumlist", apidata: albums)
-    redirect_to work_path @album_array
+    album_array = Work.create(title: params[:work][:title], medium: "albumlist", apidata: albums)
+    redirect_to work_path album_array
   end
   def show
     #from the links we create in views we will

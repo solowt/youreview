@@ -1,6 +1,6 @@
 <h2><%=@info.apidata["name"]%> by <%=@info.title%></h2>
 <h3><%=@review.title%> [<%=@review.score%>/10]</h3>
-<h4>By: <%=@review.user.email%></h4>
+<h4>By: <%=@review.user.email%> -- posted on: <%=@review.created_at.strftime("%m/%d/%Y")%>  <%=@review.created_at.strftime("at %I:%M%p")%></h4>
 <div class="artisttracks">
   <img  class ="reviewimg" src=<%=@info.apidata['images'][0]['url']%> style='float: left;'>
   <ol class = "tracklist">

@@ -1,6 +1,6 @@
 <h2><%=@info["Title"]%></h2>
 <h3><%=@review.title%> [<%=@review.score%>/10]</h3>
-<h4>By <%=@review.user.email%></h4>
+<h4>By <%=@review.user.email%> posted on: <%=@review.created_at.strftime("%m/%d/%Y")%>  <%=@review.created_at.strftime("at %I:%M%p")%></h4>
 <ul>
   <li>Director: <%=@info["Director"]%></li>
   <li>Year: <%=@info["Year"]%></li>
