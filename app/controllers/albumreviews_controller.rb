@@ -12,9 +12,8 @@ class AlbumreviewsController < ApplicationController
     @albumreview = Review.new
   end
   def create
-    puts "*"*400
     @review = current_user.reviews.create(review_params)
-    @review.update(category: "Album", work_id: params[:work_id])
+    @review.update(category: "Album", work_id: params[:work_id], name: Work.find(params[:work_id]).apidata["name"])
     redirect_to albumreview_path (@review)
   end
   def destroy
