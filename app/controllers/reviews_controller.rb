@@ -11,7 +11,6 @@ class ReviewsController < ApplicationController
     @review = Review.new
   end
   def create
-    puts "*"*400
     @review = current_user.reviews.new(review_params)
 
     movie_info = HTTParty.get("http://www.omdbapi.com/?t=#{@review.name}&plot=short&r=json")

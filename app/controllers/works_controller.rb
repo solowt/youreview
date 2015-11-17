@@ -8,12 +8,12 @@ class WorksController < ApplicationController
     @work = Work.new
   end
   def create
-    RSpotify.raw_response = true
-    @work_array = Work.create(title: "albumlist")
-    puts params.inspect
-    api_response = RSpotify::Album.search(params[:work][:title])
-    @work_array.update(apidata: api_response)
-    redirect_to work_path @work_array
+    RSpotify.raw_response = false
+    work_array =  RSpotify::Artist.search(params[:work][:title])
+    artist = work_array.first
+    albums = artist.albums
+    @album_array = Work.create(title: params[:work][:title], medium: "albumlist", apidata: albums)
+    redirect_to work_path @album_array
   end
   def show
     #from the links we create in views we will
@@ -22,9 +22,13 @@ class WorksController < ApplicationController
     @works_array = Work.find(params[:id])
   end
   def select
-    @works_array = Work.find(params[:work_id])
-    @api_info = @works_array.apidata["albums"]["items"][params[:work_index].to_i]
-    @new_work = Work.create(apidata: @api_info)
+    works_array = Work.find(params[:work_id])
+    api_info = works_array.apidata[params[:work_index].to_i]
+    @new_work = Work.find_or_create_by(unique_id: api_info["id"].to_s)
+    if !@new_work.apidata
+      @new_work.update(medium: "Album", title: works_array.title, apidata: api_info)
+    end
+    Work.where(medium: "albumlist").destroy_all
     redirect_to new_work_albumreview_path (@new_work)
   end
   def destroy

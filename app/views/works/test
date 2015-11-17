@@ -1,9 +1,8 @@
-<h2>Choose one Album to Review<h2>
-<ul>
-  <%@works_array.apidata["albums"]["items"].each_with_index do |album, index|%>
-    <li><%=album["name"]%></li>
-  <%end%>
-</ul>
+
+
+t = Time.now                        #=> 2007-11-19 08:37:48 -0600
+t.strftime("Printed on %m/%d/%Y")   #=> "Printed on 11/19/2007"
+t.strftime("at %I:%M%p")            #=> "at 08:37AM"
 
 <h2>Choose one Album to Review<h2>
 <ul>
