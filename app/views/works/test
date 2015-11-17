@@ -10,3 +10,5 @@ t.strftime("at %I:%M%p")            #=> "at 08:37AM"
     <li><%=link_to album["name"], "/works/#{@works_array.id}/#{index}"%></li>
   <%end%>
 </ul>
+
+I'm a quick learner who is dedicated to mastering new concepts and technologies in order to design and build practical software.  I enjoy investigating and solving problems, in code or otherwise. I'm looking for a challenging work environment where I can gain development experience, learn from others, and provide consistent contributions to projects.

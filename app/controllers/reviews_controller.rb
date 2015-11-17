@@ -5,6 +5,7 @@ class ReviewsController < ApplicationController
   end
   def show
     @review = Review.find(params[:id])
+    @comments = @review.comments
     @info = Work.find(@review.work_id).apidata
   end
   def new
@@ -18,7 +19,7 @@ class ReviewsController < ApplicationController
     if !@new_work.apidata
       @new_work.update(apidata: movie_info, medium: @review.category)
     end
-    @review.update(work_id: @new_work.id)
+    @review.update(work_id: @new_work.id, category: "Movie")
 
     if @review.save
       flash[:notice] = "Review was successfully created."

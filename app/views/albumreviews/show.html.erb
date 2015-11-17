@@ -1,1 +1,25 @@
-<%=@info["name"]%>
+<h2><%=@info.apidata["name"]%> by <%=@info.title%></h2>
+<h3><%=@review.title%> [<%=@review.score%>/10]</h3>
+<h4>By: <%=@review.user.email%></h4>
+<div class="artisttracks">
+  <img  class ="reviewimg" src=<%=@info.apidata['images'][0]['url']%> style='float: left;'>
+  <ol class = "tracklist">
+  <%@tracks.each do |song|%>
+    <li><%=song.name%></li>
+    <%end%>
+  </ol>
+</div>
+<p class="reviewtext"><%=@review.text%></p>
+
+<%if current_user == @review.user%>
+ <%=link_to "(Edit)", edit_albumreview_path(@review)%>
+ <%= link_to '(Delete)', albumreview_path(@review), :method => :delete %>
+ <%end%>
+ <hr>
+
+ <%=render partial: "rating"%>
+ <hr>
+ <h2>Comments</h2>
+ <h3><%=link_to "(+)", new_review_comment_path(@review)%></h3>
+ <hr>
+ <%=render partial: "comment"%>

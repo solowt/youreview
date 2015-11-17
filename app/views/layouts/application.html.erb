@@ -4,9 +4,10 @@
   <title>Youreview</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'ratyrate.js.erb'%>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body data-no-turbolink>
 
   <% if current_user %>
     <h3><%="#{current_user.email}"%>  <%= link_to '(Signout)', destroy_user_session_path, :method => :delete %></h3>

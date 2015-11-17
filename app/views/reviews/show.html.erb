@@ -1,15 +1,27 @@
-<h1><%=@review.title%> [<%=@review.score%>/10]</h1>
 <h2><%=@info["Title"]%></h2>
+<h3><%=@review.title%> [<%=@review.score%>/10]</h3>
+<h4>By <%=@review.user.email%></h4>
 <ul>
   <li>Director: <%=@info["Director"]%></li>
   <li>Year: <%=@info["Year"]%></li>
   <li>Country: <%=@info["Country"]%></li>
 </ul>
 <div>
-  <img src="<%=@info['Poster']%>" style='float: left;'>
+  <img class="reviewimg" src="<%=@info['Poster']%>" style='float: left;'>
   <p class="reviewtext"><%=@review.text%>
 </div>
+<hr>
+
+
+
 <%if current_user == @review.user%>
  <%=link_to "(Edit)", edit_review_path(@review)%>
  <%= link_to '(Delete)', review_path(@review), :method => :delete %>
  <%end%>
+<hr>
+<%=render partial: "rating"%>
+<hr>
+<h2>Comments</h2>
+<h3><%=link_to "(New Comment)", new_review_comment_path(@review)%></h3>
+<hr>
+<%=render partial: "comment"%>

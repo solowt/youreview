@@ -1,7 +1,7 @@
 <h2>All Album Reviews</h2>
 <ul>
   <%@reviews.each do |review|%>
-    <li><%=link_to review.title, "/albumreviews/#{review.id}"%></li>
+    <li><%=link_to "#{review.name} -- '#{review.title}' by #{review.user.email}", "/albumreviews/#{review.id}"%></li>
   <%end%>
 </ul>
 

@@ -1,0 +1,8 @@
+<%@comments.each do |comment|%>
+  <h3><%=comment.user.email%> -- <%=comment.title%></h3>
+  <p><%=comment.text%></p>
+  <%if current_user == @review.user || current_user == comment.user%>
+  <%=link_to "(Remove Comment)", review_comment_path(@review, comment), :method => :delete%>
+  <%end%>
+  <hr>
+<%end%>

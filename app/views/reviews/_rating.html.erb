@@ -1,0 +1,7 @@
+<p>
+  <%if current_user%>
+  Was this review helpful?
+  <%elsif%>
+  Log in to vote!
+  <%end%>
+  <%= rating_for @review, "Helpfulness", :disable_after_rate => false %></p>

@@ -5,7 +5,9 @@ class AlbumreviewsController < ApplicationController
   end
   def show
     @review = Review.find(params[:id])
-    @info = Work.find(@review.work_id).apidata
+    @comments = @review.comments
+    @info = Work.find(@review.work_id)
+    @tracks = RSpotify::Album.find(@info.unique_id).tracks
   end
   def new
     @index = params[:work_id]
@@ -17,10 +19,17 @@ class AlbumreviewsController < ApplicationController
     redirect_to albumreview_path (@review)
   end
   def destroy
+    @albumreview = Review.find(params[:id])
+    @albumreview.destroy
+    redirect_to albumreviews_path
   end
   def edit
+    @albumreview = Review.find(params[:id])
   end
   def update
+    @albumreview = Review.find(params[:id])
+    @albumreview.update(review_params)
+    redirect_to albumreview_path(@albumreview)
   end
   def review_params
     params.require(:review).permit(:text, :title, :score)

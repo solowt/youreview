@@ -1,0 +1,7 @@
+<%=form_for [@review, @comment] do |f| %>
+  <%=f.label "Title"%>
+  <%=f.text_field :title%>
+  <%=f.label :text%>
+  <%=f.text_area :text, rows: 3, cols: 30%>
+  <%=f.submit%>
+<%end%>
