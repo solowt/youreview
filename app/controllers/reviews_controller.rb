@@ -3,12 +3,6 @@ class ReviewsController < ApplicationController
   def index
     @reviews = Review.where(category: "Movie")
   end
-  def indexalbums
-    @reviews = Review.where(category: "Book")
-  end
-  def indexbooks
-    @reviews = Review.where(category: "Album")
-  end
   def show
     @review = Review.find(params[:id])
     @info = Work.find(@review.work_id).apidata
@@ -17,31 +11,19 @@ class ReviewsController < ApplicationController
     @review = Review.new
   end
   def create
-
+    puts "*"*400
     @review = current_user.reviews.new(review_params)
 
-    if @review.category == "Movie"
-      movie_info = HTTParty.get("http://www.omdbapi.com/?t=#{@review.name}&plot=short&r=json")
-      Work.all.each do |work|
-        if work.apidata["imdbID"] == movie_info["imdbID"]
-          @new_work = work
-        end
-      end
-      if !@new_work
-        @new_work = Work.create(title: @review.name, medium: "Movie", apidata: movie_info)
-      end
-      @review.update(work_id: @new_work.id)
-    # books and albums here
-    # elsif @review.category.downcase == "album"
-    #   RSpotify.raw_response = true
-    #   @album_info = RSpotify::Album.search("#{@review.name}")
-    # elsif @review.category.downcase == "album"
-
+    movie_info = HTTParty.get("http://www.omdbapi.com/?t=#{@review.name}&plot=short&r=json")
+    @new_work = Work.find_or_create_by(title: @review.name)
+    if !@new_work.apidata
+      @new_work.update(apidata: movie_info, medium: @review.category)
     end
+    @review.update(work_id: @new_work.id)
 
     if @review.save
       flash[:notice] = "Review was successfully created."
-      redirect_to @review
+        redirect_to @review
     else
       flash[:alert] = "Review creation failed, likely missing a needed field."
       render :new

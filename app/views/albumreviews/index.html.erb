@@ -1,0 +1,8 @@
+<h2>All Album Reviews</h2>
+<ul>
+  <%@reviews.each do |review|%>
+    <li><%=link_to review.title, "/albumreviews/#{review.id}"%></li>
+  <%end%>
+</ul>
+
+<%=link_to "New Review", new_work_path%>
