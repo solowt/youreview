@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   devise_for :users
   root :to => "reviews#index"
   resources :albumreviews, :except => ['create']
+  resources :bookreviews
+  get '/bookreviews/new', to: 'bookreviews#create'
   resources :reviews do
     resources :comments, :except => ['index', 'show']
   end

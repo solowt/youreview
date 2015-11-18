@@ -43,8 +43,10 @@ li.index {
 
 .movielist {
   background: tan;
-  border-top: 2px solid black;
-  border-bottom: 2px solid black;
+  border: 2px solid black;
+  width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .backdrop{
@@ -52,7 +54,4 @@ li.index {
   margin-right: auto;
   margin: 30px;
   border: 3px solid black;
-
-
 }
-.
