@@ -1,6 +1,7 @@
 class ReviewsController < ApplicationController
   before_action :authenticate_user!, except: [:show, :index]
   def index
+    #order movies here .order_by
     @reviews = Review.where(category: "Movie")
   end
   def show

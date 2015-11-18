@@ -1,17 +1,18 @@
-<h2><%=@info["title"]%></h2>
-<h2><%if @info["original_title"]%>
+<h2><%=@info["title"]%> / <%if @info["original_title"]%>
   <%=@info["original_title"]%>
   <%end%>
-<h3><%=@review.title%> [<%=@review.score%>/10]</h3>
-<h4>By <%=@review.user.email%> posted on: <%=@review.created_at.strftime("%m/%d/%Y")%>  <%=@review.created_at.strftime("at %I:%M%p")%></h4>
+</h2>
 <ul>
   <li>Release Date: <%=@info['release_date']%></li>
   <li>The Movie DB score: <%=@info['vote_avg']%></li>
   <li>Summary: <%=@info['overview']%></li>
 </ul>
+<h3><%=@review.title%> [<%=@review.score%>/10]</h3>
+<h4>By <%=@review.user.email%> posted on: <%=@review.created_at.strftime("%m/%d/%Y")%>  <%=@review.created_at.strftime("at %I:%M%p")%></h4>
 <div>
   <img class="reviewimg" src="https://image.tmdb.org/t/p/w780/<%=@review.photo_url%>" style='float: left;'>
   <p class="reviewtext"><%=@review.text%>
+  <img class="backdrop" src="https://image.tmdb.org/t/p/w780/<%=@info.backdrop_path%>"/>
 </div>
 <hr>
 

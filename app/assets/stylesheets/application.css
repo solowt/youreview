@@ -31,3 +31,28 @@
   max-width: 50px;
   border: 2px solid black;
 }
+li img {
+    list-style-type: none;
+    display: inline-block;
+    float: left;
+}
+li.index {
+    list-style-type: none;
+    display: inline-block;
+}
+
+.movielist {
+  background: tan;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+}
+
+.backdrop{
+  margin-left: auto;
+  margin-right: auto;
+  margin: 30px;
+  border: 3px solid black;
+
+
+}
+.

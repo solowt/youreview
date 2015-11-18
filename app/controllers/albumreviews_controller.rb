@@ -14,8 +14,9 @@ class AlbumreviewsController < ApplicationController
     @albumreview = Review.new
   end
   def create
+    work = Work.find(params[:work_id]).apidata
     @review = current_user.reviews.create(review_params)
-    @review.update(category: "Album", work_id: params[:work_id], name: Work.find(params[:work_id]).apidata["name"])
+    @review.update(category: "Album", work_id: params[:work_id], name: work["name"], photo_url: work['images'][0]['url'])
     redirect_to albumreview_path (@review)
   end
   def destroy

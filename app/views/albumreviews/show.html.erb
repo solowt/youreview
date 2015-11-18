@@ -2,7 +2,7 @@
 <h3><%=@review.title%> [<%=@review.score%>/10]</h3>
 <h4>By: <%=@review.user.email%> -- posted on: <%=@review.created_at.strftime("%m/%d/%Y")%>  <%=@review.created_at.strftime("at %I:%M%p")%></h4>
 <div class="artisttracks">
-  <img  class ="reviewimg" src=<%=@info.apidata['images'][0]['url']%> style='float: left;'>
+  <img  class ="reviewimg" src=<%=@review.photo_url%> style='float: left;'>
   <ol class = "tracklist">
   <%@tracks.each do |song|%>
     <li><%=song.name%></li>
