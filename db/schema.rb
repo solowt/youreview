@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151117155311) do
+ActiveRecord::Schema.define(version: 20151118142645) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,20 @@ ActiveRecord::Schema.define(version: 20151117155311) do
     t.string   "text"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "movieworks", force: :cascade do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "overview"
+    t.string   "release_date"
+    t.string   "medium"
+    t.integer  "unique_id"
+    t.string   "original_title"
+    t.string   "poster_path"
+    t.string   "backdrop_path"
+    t.integer  "vote_avg"
+    t.string   "title"
   end
 
   create_table "overall_averages", force: :cascade do |t|
@@ -77,6 +91,7 @@ ActiveRecord::Schema.define(version: 20151117155311) do
     t.string   "name"
     t.integer  "score"
     t.integer  "work_id"
+    t.string   "photo_url"
   end
 
   add_index "reviews", ["work_id"], name: "index_reviews_on_work_id", using: :btree

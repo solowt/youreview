@@ -6,7 +6,7 @@ class ReviewsController < ApplicationController
   def show
     @review = Review.find(params[:id])
     @comments = @review.comments
-    @info = Work.find(@review.work_id).apidata
+    @info = Moviework.find(@review.work_id)
   end
   def new
     @review = Review.new
@@ -14,12 +14,12 @@ class ReviewsController < ApplicationController
   def create
     @review = current_user.reviews.new(review_params)
 
-    movie_info = HTTParty.get("http://www.omdbapi.com/?t=#{@review.name}&plot=short&r=json")
-    @new_work = Work.find_or_create_by(title: @review.name)
-    if !@new_work.apidata
-      @new_work.update(apidata: movie_info, medium: @review.category)
+    movie_info = Tmdb::Search.movie("#{@review.name}")['results'][0]
+    @new_work = Moviework.find_or_create_by(unique_id: movie_info['id'])
+    if (!@new_work.title)
+      @new_work.update(overview: movie_info['overview'], medium: "Movie", release_date: movie_info['release_date'], unique_id: movie_info['id'], original_title: movie_info['original_title'], backdrop_path: movie_info['backdrop_path'], vote_avg: movie_info['vote_average'], poster_path: movie_info['poster_path'], title: movie_info['title'])
     end
-    @review.update(work_id: @new_work.id, category: "Movie")
+    @review.update(work_id: @new_work.id, category: "Movie", photo_url: @new_work['poster_path'])
 
     if @review.save
       flash[:notice] = "Review was successfully created."

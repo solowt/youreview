@@ -1,7 +1,7 @@
 <h2>All Movie Reviews</h2>
 <ul>
   <%@reviews.each do |review|%>
-    <li><img class="smallimg" src=<%=Work.find(review.work_id).apidata['Poster']%>> <%=link_to "#{review.name.titleize} -- '#{review.title}' by #{review.user.email}", review_path(review)%></li>
+    <li><img class="smallimg" src=https://image.tmdb.org/t/p/w780/<%=review.photo_url%>> <%=link_to "#{review.name.titleize} -- '#{review.title}' by #{review.user.email}", review_path(review)%></li>
   <%end%>
 </ul>
 
