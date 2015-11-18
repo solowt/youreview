@@ -1,3 +1,3 @@
 class Bookwork < ActiveRecord::Base
-  has_many :reviews
+  has_many :bookreviews
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151118194109) do
+ActiveRecord::Schema.define(version: 20151118211527) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,8 +27,6 @@ ActiveRecord::Schema.define(version: 20151118194109) do
 
   create_table "bookreviews", force: :cascade do |t|
     t.integer  "user_id"
-    t.integer  "work_id"
-    t.string   "phto_url"
     t.string   "title"
     t.string   "text"
     t.string   "category"
@@ -36,7 +34,11 @@ ActiveRecord::Schema.define(version: 20151118194109) do
     t.integer  "score"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "bookwork_id"
+    t.string   "photo_url"
   end
+
+  add_index "bookreviews", ["bookwork_id"], name: "index_bookreviews_on_bookwork_id", using: :btree
 
   create_table "bookworks", force: :cascade do |t|
     t.datetime "created_at"
@@ -66,8 +68,8 @@ ActiveRecord::Schema.define(version: 20151118194109) do
     t.string   "original_title"
     t.string   "poster_path"
     t.string   "backdrop_path"
-    t.integer  "vote_avg"
     t.string   "title"
+    t.float    "vote_avg"
   end
 
   create_table "overall_averages", force: :cascade do |t|

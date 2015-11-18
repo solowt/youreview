@@ -1,0 +1,29 @@
+<h2>
+  <%=@info.title%> by <%=@info.author%>
+</h2>
+<h3><%=@bookreview.title%> [<%=@bookreview.score%>/10]</h3>
+<h4>By <%=@bookreview.user.email%> posted on: <%=@bookreview.created_at.strftime("%m/%d/%Y")%>  <%=@bookreview.created_at.strftime("at %I:%M%p")%></h4>
+<div>
+  <img class="reviewimg" src="<%=@bookreview.photo_url%>">
+  <p class="reviewtext"><%=@bookreview.text%>
+</div>
+<hr>
+
+<%if current_user == @bookreview.user%>
+ <%=link_to "(Edit)", edit_bookreview_path(@bookreview)%>
+ <%= link_to '(Delete)', bookreview_path(@bookreview), :method => :delete %>
+ <%end%>
+<hr>
+<p>
+  <%if current_user%>
+  Was this review helpful?
+  <%elsif%>
+  Log in to vote!
+  <%end%>
+  <%= rating_for @bookreview, "Helpfulness", :disable_after_rate => false %></p>
+
+<hr>
+<h2>Comments</h2>
+<h3><%=link_to "(New Comment)", "/bookreviews/#{@bookreview.id}/comments/new"%></h3>
+<hr>
+<%=render partial: "comment"%>
