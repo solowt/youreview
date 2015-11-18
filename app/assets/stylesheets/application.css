@@ -25,5 +25,8 @@
 }
 .tracklist{
   border: 3px solid black;
-
+}
+.smallimg{
+  max-width: 50px;
+  border: 2px solid black;
 }
