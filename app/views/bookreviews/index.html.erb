@@ -1,16 +1,17 @@
-<h2>All Book Reviews</h2>
+<h2 class="title">
+  All Book Reviews
+  <%=link_to "(+)", new_bookreview_path%>
+</h2>
 <ul>
   <%@bookreviews.each do |review|%>
-    <div class="movielist">
-      <li class="index">
+    <div class="booklist">
+      <li>
         <a href=<%="/bookreviews/#{review.id}"%>>
-          <img class="smallimg" src=<%=review.photo_url%>>
+          <img class="smallbimg" src=<%=review.photo_url%>>
         </a>
       <%= rating_for review, "Helpfulness", :disable_after_rate => false %>
-      <%="#{review.name.titleize} -- '#{review.title.titleize}' #{review.score}/10"%> <%="#{review.user.email}"%>
+      <%="#{review.name.titleize} -- '#{review.title.titleize}' #{review.score}/10"%> <%="(#{review.user.email})"%>
     </li>
   </div>
   <%end%>
 </ul>
-
-<%=link_to "New Review", new_bookreview_path%>

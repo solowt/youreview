@@ -13,7 +13,32 @@
  *= require_tree .
  *= require_self
  */
-
+ html {
+   font-family: "Arial", sans-serif;
+ }
+ .devise {
+   text-align: center;
+ }
+ .nobullet{
+   list-style-type: none;
+ }
+ .nobullet > li {
+   padding: 5px;
+ }
+ .bigdiv{
+   border-left: 50px solid black;
+   border-right: 50px solid black;
+   border-bottom: 15px solid black;
+ }
+ .sitetitle {
+  border-bottom: 15px solid black;
+  border-top: 15px solid black;
+ }
+ .login {
+ }
+.title{
+  text-align: center;
+}
 .reviewtext{
    word-wrap: break-word;
    white-space: pre-wrap;
@@ -30,6 +55,18 @@
   margin-right: auto;
   border: 3px solid black;
 }
+.centerimg {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+hr {
+  height: 7px;
+  background-color: black;
+}
+.centerimg > ul {
+  list-style-type: none;
+}
 .titlelist{
   width: 500px;
   border: 3px solid black;
@@ -38,28 +75,82 @@
   margin-right: auto;
 }
 .titlelist h3 {
-  text-align: center; 
+  text-align: center;
 }
-.smallimg{
-  max-width: 50px;
-  border: 2px solid black;
-}
-li img {
-    list-style-type: none;
-    display: inline-block;
-    float: left;
-}
-li.index {
-    list-style-type: none;
-    display: inline-block;
-}
-
 .movielist {
-  background: tan;
-  border: 2px solid black;
+  background: black;
+  border: 4px solid grey;
   width: 800px;
   margin-left: auto;
   margin-right: auto;
+  text-align: center;
+}
+.movielist > ul {
+  text-align: center;
+  display: inline-block;
+}
+.movielist > li {
+  padding: 5px;
+  text-align: center;
+  display: inline-block;
+  color: white;
+  font-size: 150%;
+  width: 800px;
+}
+.smallmimg{
+  height: 150px;
+  border: 2px solid grey;
+  float: left;
+}
+.booklist {
+  background: white;
+  border: 4px solid black;
+  width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+.booklist > ul {
+  text-align: center;
+  display: inline-block;
+}
+.booklist > li {
+  padding: 5px;
+  text-align: center;
+  display: inline-block;
+  color: black;
+  font-size: 150%;
+  width: 800px;
+}
+.smallbimg {
+  height: 150px;
+  border: 2px solid black;
+  float: left;
+}
+.albumlist {
+  background: grey;
+  border: 4px solid black;
+  width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 150%;
+  text-align: center;
+}
+.albumlist > ul {
+  text-align: center;
+  display: inline-block;
+}
+.albumlist > li {
+  padding: 5px;
+  text-align: center;
+  display: inline-block;
+  color: white;
+  width: 800px;
+}
+.smallaimg {
+  height: 150px;
+  border: 2px solid black;
+  float: left;
 }
 
 .backdrop{
@@ -67,4 +158,50 @@ li.index {
   margin-right: auto;
   margin: 30px;
   border: 3px solid black;
+}
+ul.nav {
+    list-style-type: none;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    text-align: center;
+    padding: 0;
+    overflow: hidden;
+}
+li.navli {
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+a.navlink:link, a.navlink:visited {
+    display: block;
+    width: 120px;
+    font-weight: bold;
+    text-align: center;
+    padding: 4px;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+a.movielink, a.movielink:visited {
+  background-color: black;
+  color: white;
+  border: 2px solid black;
+}
+a.albumlink, a.albumlink:visited {
+  background-color: grey;
+  color: white;
+  border: 2px solid black;
+}
+a.booklink, a.booklink:visited {
+  background-color: white;
+  color: black;
+  border: 2px solid black;
+}
+a.navlink:hover, a.navlink:active {
+  background-color: grey;
+}
+a.albumlink:hover, a.albumlink:active {
+  background-color: white;
+  color:black;
 }

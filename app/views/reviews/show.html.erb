@@ -1,19 +1,26 @@
-<h2>
-  <%=@info["title"]%> / <%if @info["original_title"]%>
-  <%=@info["original_title"]%>
-  <%end%>
-</h2>
-<ul>
-  <li>Release Date: <%=@info['release_date']%></li>
-  <li>The Movie DB score: <%=@info['vote_avg']%></li>
-  <li>Summary: <%=@info['overview']%></li>
-</ul>
-<h3>
-  <%=@review.title%> [<%=@review.score%>/10]
-</h3>
-<h4>
-  By <%=@review.user.email%> posted on: <%=@review.created_at.strftime("%m/%d/%Y")%>  <%=@review.created_at.strftime("at %I:%M%p")%>
-</h4>
+<div class="title">
+  <h2>
+    <%=@info["title"]%> / <%if @info["original_title"]%>
+    <%=@info["original_title"]%>
+    <%end%>
+  </h2>
+</div>
+<div class="movieinfo">
+  <ul class="nobullet">
+    <li>Release Date: <%=@info['release_date']%></li>
+    <li>The Movie DB score: <%=@info['vote_avg']%></li>
+    <li>Summary: <%=@info['overview']%></li>
+  </ul>
+</div>
+<div class="title">
+  <h3>
+    <%=@review.title%> [<%=@review.score%>/10]
+  </h3>
+
+  <h4>
+    By <%=@review.user.email%> posted on: <%=@review.created_at.strftime("%m/%d/%Y")%>  <%=@review.created_at.strftime("at %I:%M%p")%>
+  </h4>
+</div>
 <div>
   <img class="reviewimg" src="https://image.tmdb.org/t/p/w780/<%=@review.photo_url%>">
   <p class="reviewtext"><%=@review.text%>
@@ -21,16 +28,32 @@
     <img class="backdrop" src="https://image.tmdb.org/t/p/w780/<%=@info.backdrop_path%>"/>
   <%end%>
 </div>
-<hr>
 
-<%if current_user == @review.user%>
- <%=link_to "(Edit)", edit_review_path(@review)%>
- <%= link_to '(Delete)', review_path(@review), :method => :delete %>
-<%end%>
+<div class="title">
+  <%if current_user == @review.user%>
+    <hr>
+    <%=link_to "(Edit)", edit_review_path(@review)%>
+    <%= link_to '(Delete)', review_path(@review), :method => :delete %>
+    <hr>
+  <%end%>
+</div>
+
+<div class=centerimg>
+  <ul>
+    <li>
+      <%if current_user%>
+      Was this review helpful?
+      <%elsif%>
+      Log in to vote!
+      <%end%>
+      <%= rating_for @review, "Helpfulness", :disable_after_rate => false %>
+    </li>
+  </ul>
+</div>
+
 <hr>
-<%=render partial: "rating"%>
-<hr>
-<h2>Comments</h2>
-<h3><%=link_to "(New Comment)", new_review_comment_path(@review)%></h3>
+<h2 class="title">
+  Comments <%=link_to "(+)", new_review_comment_path(@review)%>
+</h2>
 <hr>
 <%=render partial: "comment"%>

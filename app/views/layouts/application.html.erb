@@ -8,19 +8,30 @@
   <%= csrf_meta_tags %>
 </head>
 <body data-no-turbolink>
-
-  <% if current_user %>
-    <h3><%="#{current_user.email}"%>  <%= link_to '(Signout)', destroy_user_session_path, :method => :delete %></h3>
-  <% else %>
-    <h3><%= link_to 'Signup', new_user_registration_path %></h3>
-    <h3><%= link_to 'Login', new_user_session_path %></h3>
-  <% end %>
-  <nav><%=link_to "Movie Reviews", reviews_path%> <%=link_to "Album Reviews", albumreviews_path%> <%=link_to "Book Reviews", bookreviews_path%></nav>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-
-
-<%= yield %>
-
+  <div class="bigdiv">
+    <h1 class="title sitetitle">YouReview</h1>
+    <div class="logindiv">
+      <% if current_user %>
+        <h3 class="login title"><%="#{current_user.email}"%>  <%= link_to '(Signout)', destroy_user_session_path, :method => :delete %></h3>
+      <% else %>
+        <h3 class="login title"><%= link_to 'Signup', new_user_registration_path %></h3>
+        <h3 class="login title"><%= link_to 'Login', new_user_session_path %></h3>
+      <% end %>
+    </div>
+    <ul class="nav">
+      <li class="navli">
+        <%=link_to "Movie Reviews", reviews_path, class: "navlink movielink"%>
+      </li>
+      <li class="navli">
+        <%=link_to "Album Reviews", albumreviews_path, class: "navlink albumlink"%>
+      </li>
+      <li class="navli">
+        <%=link_to "Book Reviews", bookreviews_path, class: "navlink booklink"%>
+      </li>
+    </ul>
+    <p class="notice title"><%= notice %></p>
+    <p class="alert title"><%= alert %></p>
+  <%= yield %>
+</div>
 </body>
 </html>
