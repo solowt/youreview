@@ -3,10 +3,9 @@
 </h2>
 <h3><%=@bookreview.title%> [<%=@bookreview.score%>/10]</h3>
 <h4>By <%=@bookreview.user.email%> posted on: <%=@bookreview.created_at.strftime("%m/%d/%Y")%>  <%=@bookreview.created_at.strftime("at %I:%M%p")%></h4>
-<div>
+
   <img class="reviewimg" src="<%=@bookreview.photo_url%>">
   <p class="reviewtext"><%=@bookreview.text%>
-</div>
 <hr>
 
 <%if current_user == @bookreview.user%>
@@ -14,6 +13,14 @@
  <%= link_to '(Delete)', bookreview_path(@bookreview), :method => :delete %>
  <%end%>
 <hr>
+<div class="titlelist">
+<h3>Other Books by <%=@info.author%></h3>
+<ol>
+<%@book_list.each do |book|%>
+  <li><%=book['title']%> <%=book['publication_year']%></li>
+  <%end%>
+</ol>
+</div>
 <p>
   <%if current_user%>
   Was this review helpful?
