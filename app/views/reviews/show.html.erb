@@ -17,7 +17,7 @@
     <%=@review.title%> [<%=@review.score%>/10]
   </h3>
 
-  <h4>
+  <h4 class="ital">
     By <%=@review.user.email%> posted on: <%=@review.created_at.strftime("%m/%d/%Y")%>  <%=@review.created_at.strftime("at %I:%M%p")%>
   </h4>
 </div>

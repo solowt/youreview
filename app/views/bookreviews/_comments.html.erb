@@ -9,8 +9,8 @@
     <p class="ital">
       By <%=comment.user.email%>
     </p>
-    <%if current_user == @review.user || current_user == comment.user%>
-      <%=link_to "(Remove Comment)", review_comment_path(@review, comment), :method => :delete%>
+    <%if current_user == @bookreview.user || current_user == comment.user%>
+      <%=link_to "(Remove Comment)", "/bookreviews/#{@bookreview.id}/comments/#{comment.id}", :method => :delete%>
     <%end%>
     <hr>
   <%end%>

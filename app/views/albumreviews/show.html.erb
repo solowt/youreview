@@ -1,34 +1,50 @@
-<h2>
+<h2 class="title">
   <%=@info.apidata["name"]%> by <%=@info.title%>
 </h2>
-<h3>
+<h3 class="title">
   <%=@review.title%> [<%=@review.score%>/10]
 </h3>
-<h4>
+<h4 class="title ital">
   By: <%=@review.user.email%> -- posted on: <%=@review.created_at.strftime("%m/%d/%Y")%>  <%=@review.created_at.strftime("at %I:%M%p")%>
 </h4>
-<div class="artisttracks">
+<div>
   <img  class ="reviewimg" src=<%=@review.photo_url%>>
-  <ol class = "tracklist">
-  <%@tracks.each do |song|%>
-    <li><%=song.name%></li>
-  <%end%>
-  </ol>
+  <div class= "tracks">
+    <ol class = "tracklist">
+    <%@tracks.each do |song|%>
+      <li><%=song.name%></li>
+    <%end%>
+    </ol>
+  </div>
 </div>
 <p class="reviewtext">
   <%=@review.text%>
 </p>
 
 <%if current_user == @review.user%>
-  <%=link_to "(Edit)", edit_albumreview_path(@review)%>
-  <%= link_to '(Delete)', albumreview_path(@review), :method => :delete %>
+  <div class="title">
+    <%=link_to "(Edit)", edit_albumreview_path(@review)%>
+    <%= link_to '(Delete)', albumreview_path(@review), :method => :delete %>
+  </div>
 <%end%>
 
 <hr>
 
-<%=render partial: "rating"%>
+<div class=centerimg>
+  <ul>
+    <li>
+      <%if current_user%>
+      Was this review helpful?
+      <%elsif%>
+      Log in to vote!
+      <%end%>
+      <%= rating_for @review, "Helpfulness", :disable_after_rate => false %>
+    </li>
+  </ul>
+</div>
 <hr>
-<h2>Comments</h2>
-<h3><%=link_to "(+)", new_review_comment_path(@review)%></h3>
+<h2 class="title">
+  Comments <%=link_to "(+)", new_review_comment_path(@review)%>
+</h2>
 <hr>
 <%=render partial: "comment"%>

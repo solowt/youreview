@@ -1,23 +1,16 @@
-<h2>
+<h2 class="title">
   <%=@info.title%> by <%=@info.author%>
 </h2>
-<h3>
+<h3 class="title">
   <%=@bookreview.title%> [<%=@bookreview.score%>/10]
 </h3>
-<h4>
+<h4 class="title ital">
   By <%=@bookreview.user.email%> posted on: <%=@bookreview.created_at.strftime("%m/%d/%Y")%>  <%=@bookreview.created_at.strftime("at %I:%M%p")%>
 </h4>
 <div class="bookreviewimgtext">
   <img class="reviewimg" src="<%=@bookreview.photo_url%>">
   <p class="reviewtext"><%=@bookreview.text%>
 </div>
-<hr>
-
-<%if current_user == @bookreview.user%>
-  <%=link_to "(Edit)", edit_bookreview_path(@bookreview)%>
-  <%= link_to '(Delete)', bookreview_path(@bookreview), :method => :delete %>
-<%end%>
-<hr>
 <div class="titlelist">
   <h3>Other Books by <%=@info.author%></h3>
   <ol>
@@ -26,26 +19,31 @@
     <%end%>
   </ol>
 </div>
-<p>
-  <%if current_user%>
-  Was this review helpful?
-  <%elsif%>
-  Log in to vote!
+<hr>
+<div class="title">
+  <%if current_user == @bookreview.user%>
+    <%=link_to "(Edit)", edit_bookreview_path(@bookreview)%>
+    <%= link_to '(Delete)', bookreview_path(@bookreview), :method => :delete %>
   <%end%>
-  <%= rating_for @bookreview, "Helpfulness", :disable_after_rate => false %>
-</p>
+</div>
+<hr>
+<div class=centerimg>
+  <ul>
+    <li>
+      <%if current_user%>
+      Was this review helpful?
+      <%elsif%>
+      Log in to vote!
+      <%end%>
+      <%= rating_for @bookreview, "Helpfulness", :disable_after_rate => false %>
+    </li>
+  </ul>
+</div>
+
 
 <hr>
-<h2>Comments</h2>
-<h3>
-  <%=link_to "(New Comment)", "/bookreviews/#{@bookreview.id}/comments/new"%>
-</h3>
+<h2 class="title">
+  Comments <%=link_to "(+)", "/bookreviews/#{@bookreview.id}/comments/new"%>
+</h2>
 <hr>
-<%@comments.each do |comment|%>
-  <h3><%=comment.user.email%> -- <%=comment.title%></h3>
-  <p><%=comment.text%></p>
-  <%if current_user == @bookreview.user || current_user == comment.user%>
-    <%=link_to "(Remove Comment)", "/bookreviews/#{@bookreview.id}/comments/#{comment.id}", :method => :delete%>
-  <%end%>
-  <hr>
-  <%end%>
+<%=render partial: "comments"%>
