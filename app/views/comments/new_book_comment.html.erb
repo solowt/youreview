@@ -1,1 +1,10 @@
-<p>hi</p>
+<h2>
+  New comment for <%=@bookreview.name.titleize%>
+</h2>
+<%=form_for([@bookreview, @comment], url: bookreview_comments_post_path ) do |f| %>
+  <%=f.label "Title"%>
+  <%=f.text_field :title%>
+  <%=f.label :text%>
+  <%=f.text_area :text, rows: 3, cols: 30%>
+  <%=f.submit%>
+<%end%>

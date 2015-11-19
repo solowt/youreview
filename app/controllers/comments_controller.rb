@@ -4,7 +4,21 @@ class CommentsController < ApplicationController
     @review = Review.find(params[:review_id])
     @comment = Comment.new
   end
+  def post_book_comment
+    @bookreview = Bookreview.find(params[:bookreview_id])
+    @comment = @bookreview.comments.create!(comment_params)
+    @comment.update(user_id: current_user.id)
+    redirect_to bookreview_path(@bookreview)
+  end
   def new_book_comment
+    @bookreview = Bookreview.find(params[:bookreview_id])
+    @comment = Comment.new
+  end
+  def destroy_book_comment
+    @bookreview = Bookreview.find(params[:bookreview_id])
+    @comment = Comment.find(params[:id])
+    @comment.destroy
+    redirect_to bookreview_path(@bookreview)
   end
   def create
     @review = Review.find(params[:review_id])

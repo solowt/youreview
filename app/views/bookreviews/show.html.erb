@@ -26,4 +26,11 @@
 <h2>Comments</h2>
 <h3><%=link_to "(New Comment)", "/bookreviews/#{@bookreview.id}/comments/new"%></h3>
 <hr>
-<%=render partial: "comment"%>
+<%@comments.each do |comment|%>
+  <h3><%=comment.user.email%> -- <%=comment.title%></h3>
+  <p><%=comment.text%></p>
+  <%if current_user == @bookreview.user || current_user == comment.user%>
+  <%=link_to "(Remove Comment)", "/bookreviews/#{@bookreview.id}/comments/#{comment.id}", :method => :delete%>
+  <%end%>
+  <hr>
+<%end%>

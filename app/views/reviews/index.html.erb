@@ -7,7 +7,7 @@
           <img class="smallimg" src=https://image.tmdb.org/t/p/w780/<%=review.photo_url%>>
         </a>
       <%= rating_for review, "Helpfulness", :disable_after_rate => false %>
-      <%="#{review.name.titleize} -- '#{review.title}' by #{review.user.email}"%>
+      <%="#{review.name.titleize} -- '#{review.title.titleize}' by #{review.user.email}"%>
     </li>
   </div>
   <%end%>

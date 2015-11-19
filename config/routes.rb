@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   resources :albumreviews, :except => ['create']
   resources :bookreviews do
     get 'comments/new', to: 'comments#new_book_comment'
+    post 'comments/post', to: 'comments#post_book_comment'
+    delete 'comments/:id', to: 'comments#destroy_book_comment'
   end
   resources :reviews do
     resources :comments, :except => ['index', 'show']
