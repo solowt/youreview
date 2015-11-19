@@ -9,7 +9,7 @@
         <a href=<%="/bookreviews/#{review.id}"%>>
           <img class="smallbimg" src=<%=review.photo_url%>>
         </a>
-      <%= rating_for review, "Helpfulness", :disable_after_rate => false %>
+      <%= rating_for review, "Helpfulness", :disable_after_rate => false, star_path: '/images/ratyrate' %>
       <%="#{review.name.titleize} -- '#{review.title.titleize}' #{review.score}/10"%> <%="(#{review.user.email})"%>
     </li>
   </div>
