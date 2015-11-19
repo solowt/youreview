@@ -1,4 +1,6 @@
-<h2>All Movie Reviews</h2>
+<h2>
+  All Movie Reviews
+</h2>
 <ul>
   <%@reviews.each do |review|%>
     <div class="movielist">
@@ -6,10 +8,10 @@
         <a href=<%="/reviews/#{review.id}"%>>
           <img class="smallimg" src=https://image.tmdb.org/t/p/w780/<%=review.photo_url%>>
         </a>
-      <%= rating_for review, "Helpfulness", :disable_after_rate => false %>
-      <%="#{review.name.titleize} -- '#{review.title.titleize}' #{review.score}/10"%> <%="#{review.user.email}"%>
-    </li>
-  </div>
+        <%= rating_for review, "Helpfulness", :disable_after_rate => false %>
+        <%="#{review.name.titleize} -- '#{review.title.titleize}' #{review.score}/10"%> <%="#{review.user.email}"%>
+      </li>
+    </div>
   <%end%>
 </ul>
 

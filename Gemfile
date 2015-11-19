@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+gem "rails-erd"
 gem "figaro"
 gem 'themoviedb-api'
 gem 'ratyrate'

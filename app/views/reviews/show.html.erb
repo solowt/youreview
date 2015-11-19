@@ -1,4 +1,5 @@
-<h2><%=@info["title"]%> / <%if @info["original_title"]%>
+<h2>
+  <%=@info["title"]%> / <%if @info["original_title"]%>
   <%=@info["original_title"]%>
   <%end%>
 </h2>
@@ -7,23 +8,25 @@
   <li>The Movie DB score: <%=@info['vote_avg']%></li>
   <li>Summary: <%=@info['overview']%></li>
 </ul>
-<h3><%=@review.title%> [<%=@review.score%>/10]</h3>
-<h4>By <%=@review.user.email%> posted on: <%=@review.created_at.strftime("%m/%d/%Y")%>  <%=@review.created_at.strftime("at %I:%M%p")%></h4>
+<h3>
+  <%=@review.title%> [<%=@review.score%>/10]
+</h3>
+<h4>
+  By <%=@review.user.email%> posted on: <%=@review.created_at.strftime("%m/%d/%Y")%>  <%=@review.created_at.strftime("at %I:%M%p")%>
+</h4>
 <div>
   <img class="reviewimg" src="https://image.tmdb.org/t/p/w780/<%=@review.photo_url%>">
   <p class="reviewtext"><%=@review.text%>
   <%if @info.backdrop_path%>
-  <img class="backdrop" src="https://image.tmdb.org/t/p/w780/<%=@info.backdrop_path%>"/>
+    <img class="backdrop" src="https://image.tmdb.org/t/p/w780/<%=@info.backdrop_path%>"/>
   <%end%>
 </div>
 <hr>
 
-
-
 <%if current_user == @review.user%>
  <%=link_to "(Edit)", edit_review_path(@review)%>
  <%= link_to '(Delete)', review_path(@review), :method => :delete %>
- <%end%>
+<%end%>
 <hr>
 <%=render partial: "rating"%>
 <hr>

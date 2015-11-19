@@ -1,25 +1,34 @@
-<h2><%=@info.apidata["name"]%> by <%=@info.title%></h2>
-<h3><%=@review.title%> [<%=@review.score%>/10]</h3>
-<h4>By: <%=@review.user.email%> -- posted on: <%=@review.created_at.strftime("%m/%d/%Y")%>  <%=@review.created_at.strftime("at %I:%M%p")%></h4>
+<h2>
+  <%=@info.apidata["name"]%> by <%=@info.title%>
+</h2>
+<h3>
+  <%=@review.title%> [<%=@review.score%>/10]
+</h3>
+<h4>
+  By: <%=@review.user.email%> -- posted on: <%=@review.created_at.strftime("%m/%d/%Y")%>  <%=@review.created_at.strftime("at %I:%M%p")%>
+</h4>
 <div class="artisttracks">
-  <img  class ="reviewimg" src=<%=@review.photo_url%> >
+  <img  class ="reviewimg" src=<%=@review.photo_url%>>
   <ol class = "tracklist">
   <%@tracks.each do |song|%>
     <li><%=song.name%></li>
-    <%end%>
+  <%end%>
   </ol>
 </div>
-<p class="reviewtext"><%=@review.text%></p>
+<p class="reviewtext">
+  <%=@review.text%>
+</p>
 
 <%if current_user == @review.user%>
- <%=link_to "(Edit)", edit_albumreview_path(@review)%>
- <%= link_to '(Delete)', albumreview_path(@review), :method => :delete %>
- <%end%>
- <hr>
+  <%=link_to "(Edit)", edit_albumreview_path(@review)%>
+  <%= link_to '(Delete)', albumreview_path(@review), :method => :delete %>
+<%end%>
 
- <%=render partial: "rating"%>
- <hr>
- <h2>Comments</h2>
- <h3><%=link_to "(+)", new_review_comment_path(@review)%></h3>
- <hr>
- <%=render partial: "comment"%>
+<hr>
+
+<%=render partial: "rating"%>
+<hr>
+<h2>Comments</h2>
+<h3><%=link_to "(+)", new_review_comment_path(@review)%></h3>
+<hr>
+<%=render partial: "comment"%>
