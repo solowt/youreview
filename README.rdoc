@@ -1,3 +1,25 @@
-https://you-review.herokuapp.com/
+See planning directory for planning-related things.
 
-https://www.themoviedb.org/search?query=three+colors%3A+red
+Introduction:
+
+The goal of this project was to create a simple app that would allow users to write reviews about a variety of media and post them to a persistent database which would then display them for other users to read and respond to.
+
+I decided early on to use apis in order to fetch information about the thing being reviewed.  I settled on the idea of allowing reviews for movies, books, and albums and did some research to find apis that correspond to those subjects.
+
+I ended up using themoviedb's api for movies, spotify's api for music, and goodread's api for books. I used the omdb api for movies earlier in the project but abandoned it after I read about users having issues with that api when hosting on heroku.
+
+The app functions in a fairly straightforward way.  A review has one work (a work can be a movie, book, or album) and each work can have many reviews.  A review itself consists of text and user information.  A work is filled with data returned from html requests via one of the three apis I ended up using.
+
+A little more complexity was added when I decided late in the project to make a new model, bookrevews, for reviews about books specifically.  I also ended up making work models specific to books, movies, and albums (bookworks, movieworks, and albumworks).  I made this choice because the data that was returned by the apis varied in its type.  Goodreads returned data in xml form, which ruby (apparently) interpreted as a hash.  But I couldn't store this hash inside the json column in my postgres work table, so I had to find a workaround.
+
+Because of these issues, the controll:model relationship is a little strange.  I have an albumscontroller, a bookscontroller, and a moviescontroller (just called reviews_controller) but album and movie reviews share a model, both are simply referred to as reviews.  If I had more time or energy I would make a new model for either movie reviews or album reviews so the controller:model relationship would be more standard.  I also had to use some custom routing because of this issue.
+
+Another problem I ran into was that spotify's api search for albums wasn't very accurate and it usually returned an album I didn't expect.  To remedy this, I used the Artist search instead and then listed all albums associated with that artist for the user to choose from.  I did this inside the workcontroller, which is strange and non-intuitive.  I also stored the array of albums in my works table and simply deleted it after the user had made his selection.  This all couod be refactored in a much better way.  I would add a new model to hold arrays of books and move the methods out of the workscontroller.  I might also use this method for choosing books and albums as well, so there is a greater chance that a user would be able to find the book/movie that they want to review.
+
+Another thing I would like to add is a lot more validation as well as cancancan for authorizations.  I might work on some of that tonight or tomorrow morning, or perhaps over the break next week.
+
+Technologies used:
+
+Rails, Postgres, ActiveRecord, and a lot of gems.
+
+Note: as of my writing this, the bookreviews section of the heroku app is not working.  I am unsure what's causing this, but it errors out when you try to create a new review.  I think this may have something to do with HTTParty because I got a similar error when I tried to used omdb's api but now that I'm using a wrapper, it's working fine.

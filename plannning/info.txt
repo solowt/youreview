@@ -1,0 +1,59 @@
+Planning Stuff:
+
+ERD is in planning folder (thanks Nick)
+
+User Stories:
+
+1.  As a user, I want to be able to review movies so that other people can read my opinions about things.
+
+2.  As a user, I want to be able to review music so that other people can read my opinions about things.
+
+3.  As a user, I want to be able to review books so that other people can read my opinions about things.
+
+4.  As a user, I want to be able to get a list of tracks on the album I am reviewing so that I don't have to get that information myself.
+
+5.  As a user, I want to be able to rate reviews based on their helpfulness so that other users will be able to avoid bad reviews.
+
+6.  As a user, I want to be able to leave comments on reviews so that review authors can get feedback.
+
+7.  As a user, I want to be able to generate a list of books by the wuthor whom I am reviewing so that I don't have to find other books myself.
+
+
+------------------------------------------------------------------
+
+These links were just things I came across during my research for this project.  As well as the api keys I applied for and was granted.  (Don't worry, this file wasn't inside the project root during development, so it didn't get pushed).
+
+--------------------------------------------------------------------
+
+http://omdbapi.com/ - imdb api
+https://morph.io/documentation/api?scraper=mattbrehmer%2Fpitchfork-full-text-album-reviews - pitchfork apis
+
+https://market.mashape.com/byroredux/metacritic#get-coming-soon-music-albums - metacritic api
+
+ https://rubygems.org/gems/metacritic/versions/0.1.1 ruby gem for above api (for movies and games, lists critic reviews!)
+https://github.com/guilhermesad/rspotify - spotify gem
+
+https://github.com/Giphy/GiphyAPI -gyphy
+
+https://github.com/wiseleyb/google_custom_search_api -google
+
+https://github.com/jayfajardo/openlibrary - books!!
+
+key: <REDACTED>
+secret: <REDACTED>
+
+"Hi tsolow,
+
+Your request for an API key has been approved. You can start using this key immediately.
+
+API Key: <REDACTED>
+
+We recently launched our TV API and would love some feedback if you have a chance to check it out.
+
+Useful Links
+
+Documentation: https://www.themoviedb.org/documentation/api
+Support forum: https://www.themoviedb.org/talk
+Wrappers & libraries: https://www.themoviedb.org/documentation/api/wrappers-libraries
+New feature and deprecation feed: https://www.themoviedb.org/developers
+If you have any questions, feel free to create a new discussion in our support forum."
