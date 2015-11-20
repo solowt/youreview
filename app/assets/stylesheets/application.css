@@ -107,13 +107,13 @@ hr {
   float: left;
 }
 .smallmimg:hover, .smallmimg:active {
-  border: 20px solid black;
+  border: 10px solid black;
 }
 .smallbimg:hover, .smallbimg:active {
-  border: 20px solid white;
+  border: 10px solid white;
 }
 .smallaimg:hover, .smallaimg:active {
-  border: 20px solid grey;
+  border: 10px solid grey;
 }
 .booklist {
   background: white;
