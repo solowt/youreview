@@ -24,4 +24,4 @@ Technologies used:
 
 Rails, Postgres, ActiveRecord, and a lot of gems.
 
-Note: as of my writing this, the bookreviews section of the heroku app is not working.  I am unsure what's causing this, but it errors out when you try to create a new review.  I think this may have something to do with HTTParty because I got a similar error when I tried to used omdb's api but now that I'm using a wrapper, it's working fine.
+Edit- Heroku is now working.  There were two issues, one of them was with figaro which I fixed easily after rereading the figaro repo readme.  The other was that I wasn't replacing spaces with plus signs for my requests to goodreads.  This wasn't an issue for movies and albums because they use a ruby wrapper that presumably takes care of this for me.
