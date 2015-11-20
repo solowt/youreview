@@ -18,6 +18,8 @@ Another problem I ran into was that spotify's api search for albums wasn't very 
 
 Another thing I would like to add is a lot more validation as well as cancancan for authorizations.  I might work on some of that tonight or tomorrow morning, or perhaps over the break next week.
 
+Note: there are a lot of commits on an alternte branch called themb, from when I was switching apis.
+
 Technologies used:
 
 Rails, Postgres, ActiveRecord, and a lot of gems.
