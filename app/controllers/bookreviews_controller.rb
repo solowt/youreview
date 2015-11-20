@@ -21,7 +21,7 @@ class BookreviewsController < ApplicationController
     #create a new review
     @bookreview = current_user.bookreviews.new(review_params)
     #make an api call based on the title of the book
-    book_info = HTTParty.get("https://www.goodreads.com/search.xml?key=#{ENV["goodread_key"]}&q=#{@bookreview.name}")['GoodreadsResponse']['search']['results']['work'][0]['best_book']
+    book_info = HTTParty.get("https://www.goodreads.com/search.xml?key=#{ENV['goodread_key']}&q=#{@bookreview.name}")['GoodreadsResponse']['search']['results']['work'][0]['best_book']
     #create a new work, add information fromt he api call to the new work
     #I used the unique id to see if I already have this book in my DB.
     @new_work = Bookwork.find_or_create_by(unique_id: book_info['id'])
