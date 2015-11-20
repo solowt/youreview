@@ -320,7 +320,7 @@
           attrs = { alt: i, src: this.opt.path + this.opt[name] };
 
         if (this.opt.starType !== 'img') {
-          attrs = { 'data-alt': i, 'class': attrs.src}; // TODO: use $.data.
+          attrs = { 'data-alt': i, 'class': attrs.src }; // TODO: use $.data.
         }
 
         attrs.title = methods._getHint.call(this, i);
