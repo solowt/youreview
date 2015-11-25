@@ -6,5 +6,6 @@ class User < ActiveRecord::Base
   has_many :reviews
   has_many :comments
   has_many :bookreviews
+  # NHO: has_many :albumreviews? in the future..
   ratyrate_rater
 end

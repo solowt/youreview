@@ -1,3 +1,4 @@
+<!-- NHO: seeing a lot of similarity between reviews index pages, is there are a way to abstract them out using partials?  -->
 <h2 class="title">
   All Book Reviews
   <%=link_to "(+)", new_bookreview_path%>
@@ -6,7 +7,7 @@
   <%@bookreviews.each do |review|%>
     <div class="booklist">
       <li>
-        <a href=<%="/bookreviews/#{review.id}"%>>
+        <a href=<%="/bookreviews/#{review.id}"%>> <!-- NHO: Could we utilize rails link_to helpers here? -->
           <img class="smallbimg" src=<%=review.photo_url%>>
         </a>
       <%= rating_for review, "Helpfulness", :disable_after_rate => false, star_path: '/images/ratyrate' %>

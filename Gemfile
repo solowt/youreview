@@ -1,4 +1,6 @@
 source 'https://rubygems.org'
+
+# It's great that you are using a lot of gems, I would recommend a system for organzing them. I prefer alphabetically within each group.
 gem 'seed_dump'
 gem "rails-erd"
 gem "figaro"
@@ -51,3 +53,5 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
+
+# NHO: Looks like you are missing the gem `rails_12factor` for production

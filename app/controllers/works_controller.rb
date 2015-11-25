@@ -1,4 +1,5 @@
 class WorksController < ApplicationController
+  # NHO: AlbumWorks: could consider moving the api calls out of the controller and into custom methods on our model, or seperate model.
   before_action :authenticate_user!, except: [:show, :index]
   #note: the works controller is ONLY used for creating albumreviews.
   #this is the case because spotify's api was too inaccuate when it came to
@@ -52,7 +53,7 @@ class WorksController < ApplicationController
     #redirect
     redirect_to new_work_albumreview_path (@new_work)
   end
-  #didn't use these methods
+  #didn't use these methods # NHO: then delete them!
   def destroy
   end
   def edit

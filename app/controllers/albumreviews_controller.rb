@@ -1,4 +1,5 @@
 class AlbumreviewsController < ApplicationController
+  # NHO: How could you DRY up this code? I see an opportunity for something along the lines of before_action :find_review
   #authenticate user
   before_action :authenticate_user!, except: [:show, :index]
   def index

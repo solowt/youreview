@@ -20,7 +20,7 @@
 <p class="reviewtext">
   <%=@review.text%>
 </p>
-
+<!-- NHO: We could utilize CanCanCan to help with this conditional -->
 <%if current_user == @review.user%>
   <div class="title">
     <%=link_to "(Edit)", edit_albumreview_path(@review)%>

@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  # NHO: How could you utilize nested resources to make these actions more RESTful?
   before_action :authenticate_user!, except: [:show, :index]
   #create a new comment.  this is used for album reviews and movie reviews
   def new

@@ -1,3 +1,6 @@
+# NHO: Excellent seeds! I would recommend you include Model.destroy_all for each model before you create and records to make sure you have a fresh database
+# NHO: Also, how could you utilize ruby's loops and the gem faker to simplify random data generation?
+
 User.create!([
   {email: "jim@gmail.com", encrypted_password: "$2a$10$3sqAe8rgbXsA2o/zdv/sy.qhkZtnEy7Dc44Lrt.9.tjeZWhY/rKpW", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 1, current_sign_in_at: "2015-11-19 15:36:45", last_sign_in_at: "2015-11-19 15:36:45", current_sign_in_ip: "127.0.0.1", last_sign_in_ip: "127.0.0.1", password: "12345678"},
   {email: "thomas@gmail.com", encrypted_password: "$2a$10$pVscqvZ8./xzbdJVgGQ4.em0b.NhNP.rK7ovaopVF/oH.Pf2arF8y", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: "2015-11-19 19:05:23", sign_in_count: 3, current_sign_in_at: "2015-11-19 19:05:23", last_sign_in_at: "2015-11-19 18:53:04", current_sign_in_ip: "127.0.0.1", last_sign_in_ip: "127.0.0.1", password: "password"}
