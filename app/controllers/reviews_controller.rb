@@ -1,4 +1,5 @@
 class ReviewsController < ApplicationController
+  # NHO: MoviesController?
   before_action :authenticate_user!, except: [:show, :index]
   def index
     #all movie reviews so they may be displayed on the index page

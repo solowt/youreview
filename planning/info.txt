@@ -16,7 +16,7 @@ User Stories:
 
 6.  As a user, I want to be able to leave comments on reviews so that review authors can get feedback.
 
-7.  As a user, I want to be able to generate a list of books by the wuthor whom I am reviewing so that I don't have to find other books myself.
+7.  As a user, I want to be able to generate a list of books by the author whom I am reviewing so that I don't have to find other books myself.
 
 
 ------------------------------------------------------------------

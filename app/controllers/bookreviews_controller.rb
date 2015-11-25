@@ -1,5 +1,9 @@
 class BookreviewsController < ApplicationController
   before_action :authenticate_user!, except: [:show, :index]
+  # NHO: How could you DRY up this code? I see an opportunity for something along the lines of before_action :find_book_review
+  # NHO: In general, Rails style guides advise Fat Models, Skinny Controllers.
+  # NHO: I would advise to simplify controller code by moving our main business logic to our models
+  # NHO: would recommend creating custom models or methods on existing models to help simplify
   def index
     #all book reviews for the index
     @bookreviews = Bookreview.all
@@ -11,6 +15,8 @@ class BookreviewsController < ApplicationController
     @info = Bookwork.find(@bookreview.bookwork_id) #info will be the api response from goodreads, which is stored in the the booksworks table in the db
     #this is a lsit of all books by the author in question, for display on the
     #show page
+
+    # NHO: consider moving your api calls into seperate classes, so you can utilize them like models.
     @book_list = HTTParty.get("https://www.goodreads.com/author/list/#{@info.author_id}?format=xml&key=#{ENV['goodread_key']}")['GoodreadsResponse']['author']['books']['book']
   end
   def new
@@ -24,7 +30,7 @@ class BookreviewsController < ApplicationController
     book_info = HTTParty.get("https://www.goodreads.com/search.xml?key=#{ENV['goodread_key']}&q=#{@bookreview.name.gsub(' ', '+')}")['GoodreadsResponse']['search']['results']['work'][0]['best_book']
     #create a new work, add information fromt he api call to the new work
     #I used the unique id to see if I already have this book in my DB.
-    @new_work = Bookwork.find_or_create_by(unique_id: book_info['id'])
+    @new_work = Bookwork.find_or_create_by(unique_id: book_info['id']) # NHO: nice use of find_or_create_by!
     #if I didn't have the book, AKA the bookwork title column is empty, I need to fill up the new work object
     if (!@new_work.title)
       @new_work.update(unique_id: book_info['id'], image_url: book_info['image_url'], title: book_info['title'], author: book_info['author']['name'], author_id: book_info['author']['id'])
